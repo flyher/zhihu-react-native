@@ -56,3 +56,4 @@ fastlane/screenshots
 android/app/zhihurn-key.keystore
 android/app/build.gradle
 android/gradle.properties
+android/app/build/outputs/apk
