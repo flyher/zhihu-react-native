@@ -1,5 +1,5 @@
 # zhihu-react-native
-a simple zhihu app for Android and IOS
+a simple zhihu app for Android/IOS
 
 
 
