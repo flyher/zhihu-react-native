@@ -17,7 +17,7 @@ import { StackNavigator } from 'react-navigation';
 let BASE_URL = 'https://news-at.zhihu.com/api/4/news/';
 let SPACE_HTML = '<div class="img-place-holder"></div>';
 let ZHIHU_CSS = 'https://daily.zhihu.com/css/share.css?v=5956a';
-let Base_share_url = 'https://daily.zhihu.com/story/';
+// let Base_share_url = 'https://daily.zhihu.com/story/';
 let rate = 0.95;
 let { width, height } = Dimensions.get('window');
 
@@ -31,8 +31,10 @@ class DetailContainer extends Component {
     const { params } = this.props.navigation.state;
     this.state = {
       isLoading: true,
-      story: params.story
+      story: params.story,
+      content: {}
     };
+    this.copyUrl = this.copyUrl.bind(this);
   }
 
   componentDidMount() {
@@ -59,9 +61,9 @@ class DetailContainer extends Component {
           isLoading: false,
           content: content
         });
-        this.props.navigation.setParams({
-          isLoading: false
-        });
+        // this.props.navigation.setParams({
+        //   isLoading: false
+        // });
       })
       .catch((error) => {
         console.error(error);
@@ -69,14 +71,30 @@ class DetailContainer extends Component {
   }
 
   defineNav() {
-    let params = this.state;
+    // let params = this.state;
+    // this.props.navigation.setParams({
+    //   navigateCopyUrl: this.copyUrl(params)
+    // })
     this.props.navigation.setParams({
-      navigateCopyUrl: this.copyUrl(params)
+      navigateCopyUrl: this.copyUrl
     })
   }
 
-  copyUrl(params) {
-    Clipboard.setString(Base_share_url + params.story.id.toString());
+  copyUrl = () => {
+    if (this.state.content.share_url.length <= 0 || this.state.content.share_url === undefined) {
+      return false;
+    }
+
+    Clipboard.setString(this.state.content.share_url);
+
+    Alert.alert(
+      '提示框',
+      '链接复制成功',
+      [
+        { text: '确认', onPress: () => console.log('OK Pressed') },
+      ],
+      { cancelable: false }
+    )
   }
 
   render() {
