@@ -3,6 +3,10 @@ a simple zhihu app for Android/IOS
 
 
 
+##### version 0.2
+
+1. alert message after copy url
+
 ##### version 0.1
 
 1. lastest stories
