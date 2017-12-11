@@ -26,7 +26,7 @@ v0.1
 
 Test in  Android 6.0 , Android 7.0
 
-![screenshot@0.1](/screenshot_v0.1.png)
+![screenshot@0.1](https://img.99diary.com/project/src/zhihu-react-native/Screenshot_01@v0.1_20170825.png)
 
 
 ##### install
