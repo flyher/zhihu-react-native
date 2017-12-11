@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   ActivityIndicator,
   FlatList,
   Text,
@@ -11,8 +10,7 @@ import {
   RefreshControl
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import ImgDes from './component/ImgDes';
-import DetailContainer from './component/Detail';
+import ImgDes from '../component/ImgDes';
 
 let rate = 0.95;
 let { width, height } = Dimensions.get('window');
@@ -20,9 +18,9 @@ let BASE_URL = 'https://news-at.zhihu.com/api/4/news/latest';
 let refreshCircleColors = ['#ff0000', '#00ff00', '#0000ff', '#123456'];
 let refreshBgColor = '#ffffff';
 
-class HomeContainer extends Component {
+export default class LatestContainer extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'zhihu-react-native'
+    title: 'zhihu-react-native v0.3'
     // headerRight: <Text style={styles.headerRight}>v 0.01</Text>,
   });
 
@@ -31,12 +29,11 @@ class HomeContainer extends Component {
     this.state = {
       isLoading: true,
       isRefreshing: false
-    }
+    };
   }
 
   getInitialState() {
-    return {
-    };
+    return {};
   }
 
   componentDidMount() {
@@ -45,8 +42,8 @@ class HomeContainer extends Component {
 
   fetchLatest() {
     return fetch(BASE_URL)
-      .then((response) => response.json())
-      .then((responseJson) => {
+      .then(response => response.json())
+      .then(responseJson => {
         let stories = responseJson.stories;
         let top_stories = responseJson.top_stories;
         for (var i = 0; i < stories.length; i++) {
@@ -64,7 +61,7 @@ class HomeContainer extends Component {
           date: responseJson.date
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
       });
   }
@@ -85,41 +82,39 @@ class HomeContainer extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.list}>
-        <FlatList style={styles.flatlist} data={this.state.stories} rate={rate}
-          renderItem={
-            ({ item }) =>
-              <ImgDes children={item} onParentGotoDetail={(item) => navigate('Detail', { story: item })}></ImgDes>
-          }
+        <FlatList
+          style={styles.flatlist}
+          data={this.state.stories}
+          rate={rate}
+          renderItem={({ item }) => (
+            <ImgDes
+              children={item}
+              onParentGotoDetail={item => navigate('Detail', { story: item })}
+            />
+          )}
           horizontal={false}
           refreshControl={
-            <RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh.bind(this)} />
+            <RefreshControl
+              refreshing={this.state.isRefreshing}
+              onRefresh={this._onRefresh.bind(this)}
+            />
           }
         />
       </View>
     );
-
   }
 }
 
 const styles = StyleSheet.create({
-  list: {
-  },
+  list: {},
   title: {
     textAlign: 'center'
   },
-  flatlist: {
-  },
+  flatlist: {},
   refreshLayout: {
     flex: 1
   },
   headerRight: {
     paddingRight: 0.1 * width * 0.5
   }
-})
-
-const App = StackNavigator({
-  Home: { screen: HomeContainer },
-  Detail: { screen: DetailContainer }
 });
-
-AppRegistry.registerComponent('zhihuReactNative', () => App);

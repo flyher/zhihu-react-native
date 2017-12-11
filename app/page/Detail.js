@@ -21,7 +21,7 @@ let ZHIHU_CSS = 'https://daily.zhihu.com/css/share.css?v=5956a';
 let rate = 0.95;
 let { width, height } = Dimensions.get('window');
 
-class DetailContainer extends Component {
+export default class DetailContainer extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerRight: <Text style={styles.headerRight} onPress={navigation.state.params.navigateCopyUrl}>分享</Text>,
   });
@@ -139,6 +139,3 @@ const styles = StyleSheet.create({
     paddingRight: 0.1 * width * 0.5
   }
 })
-
-
-export default DetailContainer;

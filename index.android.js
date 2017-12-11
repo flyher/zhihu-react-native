@@ -4,4 +4,4 @@
  * @flyher
  */
 
-import './zhihu/latest';
+import './app/app'
