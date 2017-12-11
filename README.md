@@ -1,24 +1,30 @@
 # zhihu-react-native
-a simple zhihu app for Android/IOS
+A simple zhihu app for Android/IOS
 
 
+##### update log
 
-##### version 0.2
+```log
+v0.3
+1. change file location
+```
 
+```log
+v0.2
 1. alert message after copy url
+```
 
-##### version 0.1
-
+```log
+v0.1
 1. lastest stories
-
 2. refresh list
-
 3. support copy url
+```
 
 
 ##### screenshot
 
-Test in  Android 6.0
+Test in  Android 6.0 , Android 7.0
 
 ![screenshot@0.1](/screenshot_v0.1.png)
 
