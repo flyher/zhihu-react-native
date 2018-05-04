@@ -37,12 +37,12 @@ export default class DetailContainer extends Component {
     this.copyUrl = this.copyUrl.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchStory();
     this.defineNav();
   }
 
-  fetchStory() {
+  fetchStory () {
     let url = BASE_URL + (this.state.story.id).toString();
     return fetch(url)
       .then((response) => response.json())
@@ -70,7 +70,7 @@ export default class DetailContainer extends Component {
       });
   }
 
-  defineNav() {
+  defineNav () {
     // let params = this.state;
     // this.props.navigation.setParams({
     //   navigateCopyUrl: this.copyUrl(params)
@@ -85,7 +85,10 @@ export default class DetailContainer extends Component {
       return false;
     }
 
-    Clipboard.setString(this.state.content.share_url);
+    Clipboard.setString(
+      '分享知乎上一篇文章给你：' + this.state.content.title + " " +
+      this.state.content.share_url
+    );
 
     Alert.alert(
       '提示框',
@@ -97,7 +100,7 @@ export default class DetailContainer extends Component {
     )
   }
 
-  render() {
+  render () {
     if (this.state.isLoading) {
       return (
         <View>

@@ -4,6 +4,12 @@ A simple zhihu app for Android/IOS
 
 ##### update log
 
+``` log
+v0.4
+1.top_stories and latest_stories
+2.fix bug in list image ?
+```
+
 ```log
 v0.3
 1. change file location

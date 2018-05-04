@@ -1,15 +1,15 @@
 {
 	"name": "zhihuReactNative",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
 	},
 	"dependencies": {
-    "react": "16.0.0-alpha.6",
-    "react-native": "0.43.4",
-    "react-navigation": "^1.0.0-beta.11"
+		"react": "16.0.0-alpha.6",
+		"react-native": "0.43.4",
+		"react-navigation": "^1.0.0-beta.11"
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",
